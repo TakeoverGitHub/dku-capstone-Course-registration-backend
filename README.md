@@ -31,6 +31,7 @@
 3. `src/main/resources/application.properties` (또는 yml) 파일에 로컬 DB 계정 정보를 알맞게 수정합니다.
 4. IDE(IntelliJ 등)에서 프로젝트를 열고 `RegistrationApplication.java`를 실행합니다.
 
-## 5. 👨‍💻 Backend 팀원
-- **박재성:** DB 설계, 대기열 및 동시성 제어 로직 개발, 공통 API 구현
-- **[팀원 2 이름]:** [담당할 역할 간략히 기재]
+## 5. 👨‍💻 Backend 및 Frontend 팀원
+- 박재성: DB 설계, 대기열 및 동시성 제어 로직 개발, 공통 API 구현, 클라우드 서버 배포(AWS 등) 환경 구축 및 부하 테스트(JMeter) 진행
+- 김정민: DB 설계, 대기열 및 동시성 제어 로직 개발, 공통 API 구현, 클라우드 서버 배포(AWS 등) 환경 구축 및 부하 테스트(JMeter) 진행
+- 김형균: UI/UX 디자인, 수강신청 및 대기열 실시간 확인 화면 개발, Backend API 연동 및 화면 테스트
