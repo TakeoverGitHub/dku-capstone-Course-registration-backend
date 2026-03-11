@@ -25,7 +25,7 @@
 
 ### 실행 방법
 1. 저장소를 클론(Clone) 또는 포크(Fork) 합니다.
-    > git clone https://github.com/TakeoverGitHub/dku-capstone-Course-registration-backend.git
+    > git clone [본인의 Fork 레포지토리 주소]
 
 2. 로컬 DB 세팅: MySQL에 `registration` 데이터베이스를 생성합니다.
 3. `src/main/resources/application.properties` (또는 yml) 파일에 로컬 DB 계정 정보를 알맞게 수정합니다.
