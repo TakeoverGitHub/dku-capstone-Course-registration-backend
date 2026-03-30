@@ -1,3 +1,4 @@
+//Enrollment.java(Builder를 통한 생성 시점에서 모든 데이터 확정)
 package com.capstone.registration;
 
 import jakarta.persistence.*;
@@ -14,7 +15,6 @@ public class Enrollment {
     @Column(name = "enrollment_id")
     private Long id;
 
-    // 성능 최적화를 위한 LAZY 설정
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
@@ -24,7 +24,7 @@ public class Enrollment {
     private Course course;
 
     @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt; // 수강 확정된 시간
+    private LocalDateTime createdAt;
 
     @Builder
     public Enrollment(Student student, Course course) {
