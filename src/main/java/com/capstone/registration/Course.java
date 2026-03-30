@@ -13,6 +13,9 @@ public class Course {
     @Column(name = "course_id")
     private Long id;
 
+    @Version
+    private Long version;
+
     @Column(name = "course_code", nullable = false, length = 20)
     private String courseCode; // 과목 코드 (예: CS101)
 
@@ -47,5 +50,12 @@ public class Course {
             throw new IllegalStateException("수강 정원이 초과되었습니다.");
         }
         this.currentEnrollment++;
+    }
+
+    public void decreaseEnrollment() {
+        if (this.currentEnrollment <= 0) {
+            throw new IllegalStateException("현재 인원이 0명입니다.");
+        }
+        this.currentEnrollment--;
     }
 }
