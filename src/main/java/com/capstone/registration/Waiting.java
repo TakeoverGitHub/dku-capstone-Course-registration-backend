@@ -23,10 +23,12 @@ public class Waiting {
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
+    // 대기 상태 (WAITING, TRANSFERRED, CANCELED)
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private WaitingStatus status;
 
+    // 예비번호 우선순위를 결정짓는 기준 시간
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
@@ -38,6 +40,7 @@ public class Waiting {
         this.createdAt = LocalDateTime.now();
     }
 
+    // 비즈니스 로직: 상태 변경 (예: 취소자 발생 시 TRANSFERRED로 변경)
     public void transferToEnrollment() {
         this.status = WaitingStatus.TRANSFERRED;
     }
