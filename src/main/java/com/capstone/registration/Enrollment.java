@@ -1,3 +1,4 @@
+//Enrollment.java(Builder를 통한 생성 시점에서 모든 데이터 확정)
 package com.capstone.registration;
 
 import jakarta.persistence.*;
@@ -24,7 +25,7 @@ public class Enrollment {
     private Course course;
 
     @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt; // 수강 확정된 시간
+    private LocalDateTime createdAt; //수강 확정된 시간
 
     @Builder
     public Enrollment(Student student, Course course) {

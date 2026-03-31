@@ -1,3 +1,4 @@
+//Waiting.java(상태 변경의 의도 명확화)
 package com.capstone.registration;
 
 import jakarta.persistence.*;
@@ -40,14 +41,11 @@ public class Waiting {
     }
 
     // 비즈니스 로직: 상태 변경 (예: 취소자 발생 시 TRANSFERRED로 변경)
-    public void updateStatus(WaitingStatus status) {
-        this.status = status;
+    public void transferToEnrollment() {
+        this.status = WaitingStatus.TRANSFERRED;
     }
-}
 
-// ⭐ 상태 관리를 위한 Enum
-enum WaitingStatus {
-    WAITING,       // 대기 중
-    TRANSFERRED,   // 여석 발생으로 수강 확정(Enrollment)으로 넘어감
-    CANCELED       // 스마트 스왑 발동 - 타 과목 확정으로 인해 대기 자동 이탈
+    public void cancel() {
+        this.status = WaitingStatus.CANCELED;
+    }
 }
