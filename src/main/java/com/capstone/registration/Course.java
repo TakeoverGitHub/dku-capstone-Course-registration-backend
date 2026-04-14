@@ -44,6 +44,19 @@ public class Course {
     @Column(name = "end_time")
     private int endTime; // 종료 교시 (예: 3)
 
+    @Builder
+    public Course(String courseCode, int classNo, String courseName, int credit, int maxCapacity, String dayOfWeek, int startTime, int endTime) {
+        this.courseCode = courseCode;
+        this.classNo = classNo;
+        this.courseName = courseName;
+        this.credit = credit;
+        this.maxCapacity = maxCapacity;
+        this.dayOfWeek = dayOfWeek;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.currentEnrollment = 0; // 초기 수강 인원은 0명!
+    }
+
     // 비즈니스 로직: 수강 인원 1명 증가 (Lock 걸고 실행할 메서드)
     public void increaseEnrollment() {
         if (this.currentEnrollment >= this.maxCapacity) {
