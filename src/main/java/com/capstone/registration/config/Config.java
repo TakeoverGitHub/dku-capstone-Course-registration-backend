@@ -1,4 +1,18 @@
-package com.capstone.registration;
+package com.capstone.registration.config; // 프로젝트의 실제 패키지 경로로 수정하세요
 
-public class Config {
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class Config implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**") // 모든 API 경로 허용
+                .allowedOrigins("http://localhost:3000") // 리액트 서버 주소
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true);
+    }
 }
