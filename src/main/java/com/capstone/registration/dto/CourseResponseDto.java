@@ -16,13 +16,14 @@ public class CourseResponseDto {
     private String dayOfWeek;
     private int startTime;
     private int endTime;
+    private int classNo;
 
     // 엔티티를 포장하는 메소드(화면에 출력할 데이터만 거름)
     public static CourseResponseDto from(Course course) {
         return new CourseResponseDto(
                 course.getId(), course.getCourseCode(), course.getCourseName(),
                 course.getCredit(), course.getMaxCapacity(), course.getCurrentEnrollment(),
-                course.getDayOfWeek(), course.getStartTime(), course.getEndTime()
+                course.getDayOfWeek(), course.getStartTime(), course.getEndTime(), course.getClassNo()
         );
     }
 }
