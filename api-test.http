@@ -7,5 +7,32 @@ Content-Type: application/json
   "courseId": 1
 }
 
-### 2. 장바구니 조회 테스트 (GET)
+### 2. 장바구니 조회 테스트 (기존에 있던 것)
 GET http://localhost:8080/api/cart/12345678
+
+### 1단계: 더미 학생 신청
+POST http://localhost:8080/api/enroll
+Content-Type: application/json
+
+{
+  "studentId": "99999999",
+  "courseId": 7
+}
+
+### 2단계: 내가 대기열 진입
+POST http://localhost:8080/api/enroll
+Content-Type: application/json
+
+{
+  "studentId": "12345678",
+  "courseId": 7
+}
+
+### 3단계: 더미 학생 취소 (메일 발송)
+POST http://localhost:8080/api/enroll/cancel
+Content-Type: application/json
+
+{
+  "studentId": "99999999",
+  "courseId": 7
+}

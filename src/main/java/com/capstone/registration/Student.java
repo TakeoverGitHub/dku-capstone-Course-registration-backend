@@ -29,13 +29,17 @@ public class Student {
     @Column(name = "available_credit", nullable = false)
     private int availableCredit = 21;
 
+    @Column(length = 100)
+    private String email;
+
     @Builder
-    public Student(String studentId, String password, String name, int maxCredit) {
+    public Student(String studentId, String password, String name, int maxCredit, String email) {
         this.studentId = studentId;
         this.password = password;
         this.name = name;
         this.maxCredit = maxCredit;
         this.availableCredit = maxCredit;
+        this.email = email;
     }
 
     // 비즈니스 로직: 대기열/수강신청 시 학점 차감

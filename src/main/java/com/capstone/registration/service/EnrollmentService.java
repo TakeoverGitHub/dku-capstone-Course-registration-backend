@@ -27,6 +27,7 @@ public class EnrollmentService {
     private final CourseRepository courseRepository;
     private final EnrollmentRepository enrollmentRepository;
     private final WaitingRepository waitingRepository;
+    private final EmailService emailService;
 
     @Transactional
     public String enroll(EnrollmentRequestDto requestDto) {
@@ -104,7 +105,21 @@ public class EnrollmentService {
                     // 4. 수강 인원 다시 1명 증가 (취소로 1명 줄었던 걸 대기자가 채움)
                     course.increaseEnrollment();
 
-                    //대기열 진입 시점에 이미 학생 학점을 깎아뒀기 때문에 여기서 학점 차감을 또 할 필요없음
+                    // 이메일 유무 검사 로직
+                    String targetEmail = waiting.getStudent().getEmail();
+
+                    // 이메일 칸이 null이 아니고, 빈칸도 아닐 때만 발송
+                    if (targetEmail != null && !targetEmail.trim().isEmpty()) {
+                        emailService.sendEnrollmentSuccessEmail(
+                                targetEmail,
+                                waiting.getStudent().getName(),
+                                course.getCourseName()
+                        );
+                        System.out.println("✅ 이메일 발송 성공: " + targetEmail); // 로그 확인용
+                    } else {
+                        // 이메일이 없는 더미 데이터는 조용히 스킵 (서버 에러 방지)
+                        System.out.println("⚠️ 이메일 정보 없음 - 발송 스킵 (학번: " + waiting.getStudent().getStudentId() + ")");
+                    }
                 });
     }
 
