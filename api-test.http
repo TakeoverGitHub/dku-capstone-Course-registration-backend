@@ -1,12 +1,11 @@
-### 1. 전체 강의 목록 조회 테스트
-GET http://localhost:8080/api/courses
-
-
-### 2. 수강신청 요청 테스트 (김민수 -> 1번 자바 프로그래밍 신청)
-POST http://localhost:8080/api/enroll
+### 1. 장바구니 담기 테스트 (POST)
+POST http://localhost:8080/api/cart
 Content-Type: application/json
 
 {
-  "studentId": "32201234",
+  "studentId": "12345678",
   "courseId": 1
 }
+
+### 2. 장바구니 조회 테스트 (GET)
+GET http://localhost:8080/api/cart/12345678

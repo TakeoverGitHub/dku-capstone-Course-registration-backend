@@ -39,10 +39,10 @@ public class Course {
     private String dayOfWeek; // 요일 (MON, TUE 등)
 
     @Column(name = "start_time")
-    private int startTime; // 시작 교시 (예: 1)
+    private Integer startTime; // 시작 교시 (예: 1)
 
     @Column(name = "end_time")
-    private int endTime; // 종료 교시 (예: 3)
+    private Integer endTime; // 종료 교시 (예: 3)
 
     @Builder
     public Course(String courseCode, int classNo, String courseName, int credit, int maxCapacity, String dayOfWeek, int startTime, int endTime) {

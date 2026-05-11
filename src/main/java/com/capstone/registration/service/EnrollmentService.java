@@ -14,6 +14,7 @@ import com.capstone.registration.WaitingStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.dao.OptimisticLockingFailureException;
 
 import java.util.List;
 import java.util.Map;
@@ -47,10 +48,12 @@ public class EnrollmentService {
                     .student(student)
                     .course(course)
                     .build();
-            enrollmentRepository.save(enrollment);
+
+            //save 대신 saveAndFlush를 사용하여 즉시 DB 반영 및 충돌 테스트
+            enrollmentRepository.saveAndFlush(enrollment);
             return "SUCCESS";
 
-        } catch (IllegalStateException e) {
+        } catch (IllegalStateException | OptimisticLockingFailureException e) {
             // 4. 정원이 꽉 찼거나 동시성 충돌로 밀려났다면 대기열(Waiting)로 등록
             Waiting waiting = Waiting.builder()
                     .student(student)
