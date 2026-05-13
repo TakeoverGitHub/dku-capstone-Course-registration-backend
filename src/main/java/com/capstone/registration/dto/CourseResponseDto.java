@@ -17,13 +17,22 @@ public class CourseResponseDto {
     private int startTime;
     private int endTime;
     private int classNo;
+    private int wish;
+    private int remain;
+    private int grade;
+    private String campus;
+    private String major;
+    private String category;
+    private String courseType;
 
     // 엔티티를 포장하는 메소드(화면에 출력할 데이터만 거름)
     public static CourseResponseDto from(Course course) {
         return new CourseResponseDto(
                 course.getId(), course.getCourseCode(), course.getCourseName(),
                 course.getCredit(), course.getMaxCapacity(), course.getCurrentEnrollment(),
-                course.getDayOfWeek(), course.getStartTime(), course.getEndTime(), course.getClassNo()
-        );
+                course.getDayOfWeek(), course.getStartTime(), course.getEndTime(), course.getClassNo(),
+                course.getWish(), course.getRemain(), course.getGrade(), course.getCampus(),
+                course.getMajor(), course.getCategory(), course.getCourseType()
+                );
     }
 }

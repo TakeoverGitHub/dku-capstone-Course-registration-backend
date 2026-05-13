@@ -42,9 +42,16 @@ public class DummyDataLoader implements CommandLineRunner {
                     .courseName("자바 프로그래밍")
                     .credit(3)
                     .maxCapacity(40)
-                    .dayOfWeek("MON")
+                    .dayOfWeek("월")
                     .startTime(1)
                     .endTime(3)
+                    .wish(1)
+                    .remain(0)
+                    .campus("죽전")
+                    .major("SW융합 소프트웨어학과")
+                    .category("전공필수")
+                    .courseType("전공")
+                    .grade(2)
                     .build();
 
             Course course2 = Course.builder()
@@ -53,9 +60,16 @@ public class DummyDataLoader implements CommandLineRunner {
                     .courseName("소프트웨어 공학")
                     .credit(3)
                     .maxCapacity(30)
-                    .dayOfWeek("TUE")
+                    .dayOfWeek("화")
                     .startTime(2)
                     .endTime(4)
+                    .wish(0)
+                    .remain(0)
+                    .campus("죽전")
+                    .major("SW융합 소프트웨어학과")
+                    .category("전공선택")
+                    .courseType("전공")
+                    .grade(3)
                     .build();
 
             Course course3 = Course.builder()
@@ -64,9 +78,16 @@ public class DummyDataLoader implements CommandLineRunner {
                     .courseName("데이터베이스 개론")
                     .credit(3)
                     .maxCapacity(50)
-                    .dayOfWeek("WED")
+                    .dayOfWeek("수")
                     .startTime(5)
                     .endTime(7)
+                    .wish(0)
+                    .remain(0)
+                    .campus("죽전")
+                    .major("SW융합 소프트웨어학과")
+                    .category("전공필수")
+                    .courseType("전공")
+                    .grade(2)
                     .build();
 
             courseRepository.saveAll(List.of(course1, course2, course3));
